@@ -1,0 +1,16 @@
+bird_size <- read.csv(url("http://www.esapubs.org/archive/ecol/E088/096/avian_ssd_jan07.txt"), sep = "\t", na.strings = c("-999", "-999.0"))
+
+ggplot(data = bird_size, aes(x=F_mass))+labs(x= "Female Mass (g)")+geom_histogram()
+
+ggplot(data = bird_size, aes(x=F_mass))+labs(x= "Female Mass (g)")+
+  geom_histogram(fill="blue")+scale_x_log10()
+
+#Used yellow to create more contrast
+ggplot(data = bird_size, aes(x= F_mass))+labs(x= "Female and Male Mass (g)") + geom_histogram(fill="blue", alpha= 0.3)+ 
+  geom_histogram(aes(x= M_mass), fill="yellow", alpha= 0.3) + scale_x_log10()
+
+ggplot(data = bird_size, aes(x= F_mass))+labs(x= "Female and Male Mass (g)") + geom_histogram(fill="blue", alpha= 0.3)+ 
+  geom_histogram(aes(x= M_mass), fill="yellow", alpha= 0.3) + scale_x_log10()+facet_wrap(~Family)
+
+ggplot(data = bird_size, aes(x= F_wing))+labs(x= "Female and Male Mass Wing Size") + geom_histogram(fill="blue", alpha= 0.3)+ 
+  geom_histogram(aes(x= M_wing), fill="yellow", alpha= 0.3) + scale_x_log10()+facet_wrap(~Family)
